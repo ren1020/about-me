@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOBBY</title>
+    <!-- reset.css ress -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="body">
+    <header class="header">
+      <nav class="nav">
+        <ul>
+          <li><a href="TOP.html">TOP</a></li>
+          <li><a href="myprofile.html">MY PROFILE</a></li>
+          <li><a href="hobby.html">HOBBY</a></li>
+          <li><a href="cat.html">CAT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="hobby">
+        <h1>趣味・特技</h1>
+        <p class="hobby-description">
+          私の好きなことや得意なことをご紹介します。
+        </p>
+
+        <div class="hobby-grid">
+          <div class="hobby-card">
+            <div class="hobby-icon">�</div>
+            <h3>猫動画の視聴</h3>
+            <p>
+              可愛い猫の動画を見るのが大好きです。YouTubeやTikTokで猫の面白い動画や癒される動画を探して視聴しています。特に子猫の動画は何時間でも見ていられます。
+            </p>
+            <div class="hobby-tags">
+              <span class="tag">猫</span>
+              <span class="tag">YouTube</span>
+              <span class="tag">癒し</span>
+            </div>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">🎮</div>
+            <h3>ゲーム</h3>
+            <p>
+              FPSゲームやRPGゲームが大好きです。友人とオンラインでプレイすることが多く、チームワークや戦略を考えることが楽しいです。
+            </p>
+            <div class="hobby-tags">
+              <span class="tag">FPS</span>
+              <span class="tag">RPG</span>
+              <span class="tag">オンライン</span>
+            </div>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">🧁</div>
+            <h3>お菓子作り</h3>
+            <div class="hobby-images">
+              <img src="images/Image (14).jpeg" alt="手作りクッキー" class="hobby-image">
+              <img src="images/Image (3).jpeg" alt="手作り生チョコ" class="hobby-image">
+              <img src="images/Image (5).jpeg" alt="手作りパフェ" class="hobby-image">
+              <img src="images/Image (1).jpeg" alt="手作りガトーショコラ" class="hobby-image">
+            </div>
+            <p>
+              休日にはクッキーやケーキ、カップケーキなどのお菓子作りを楽しんでいます。レシピを見ながら新しいお菓子に挑戦するのが楽しく、完成したお菓子を友人や家族と分け合っています。
+            </p>
+            <div class="hobby-tags">
+              <span class="tag">クッキー</span>
+              <span class="tag">ケーキ</span>
+              <span class="tag">手作り</span>
+            </div>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">🍰</div>
+            <h3>スイーツ店巡り</h3>
+            <div class="hobby-images">
+              <img src="images/Image (7).jpeg" alt="Panel Cafe" class="hobby-image">
+              <img src="images/Image (8).jpeg" alt="甘味屋" class="hobby-image">
+              <img src="images/Image (9).jpeg" alt="パンケーキ" class="hobby-image">
+              <img src="images/Image (15).jpeg" alt="パンケーキ" class="hobby-image">
+            </div>
+            <p>
+              美味しいスイーツを求めて、様々なカフェやケーキ屋さんを巡っています。新しくオープンしたお店や話題のスイーツをチェックして、SNSでシェアするのも楽しみの一つです。
+            </p>
+            <div class="hobby-tags">
+              <span class="tag">カフェ</span>
+              <span class="tag">ケーキ</span>
+              <span class="tag">SNS</span>
+            </div>
+          </div>
+
+          <div class="hobby-card">
+            <div class="hobby-icon">💼</div>
+            <h3>アルバイト</h3>
+            <p>
+              学業と両立しながら、接客業のアルバイトをしています。お客様とのコミュニケーションを通じて、社会経験を積み、責任感やチームワークを学んでいます。
+            </p>
+            <div class="hobby-tags">
+              <span class="tag">接客</span>
+              <span class="tag">コミュニケーション</span>
+              <span class="tag">チームワーク</span>
+            </div>
+          </div>
+      </section>
+    </main>
+    
+    <!-- 画像拡大モーダル -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImg">
+      <div id="caption"></div>
+      <a class="modal-nav prev" id="prevBtn">&#10094;</a>
+      <a class="modal-nav next" id="nextBtn">&#10095;</a>
+    </div>
+    
+    <footer class="footer">
+      <p>&copy; 2024 わたしの自己紹介サイト</p>
+    </footer>
+    
+    <script>
+      // 画像拡大機能
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      const captionText = document.getElementById('caption');
+      const images = document.querySelectorAll('.hobby-image');
+      const span = document.getElementsByClassName('close')[0];
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      
+      let currentImageIndex = 0;
+      let currentImageGroup = [];
+
+      // 各画像にクリックイベントを追加
+      images.forEach(function(img, index) {
+        img.onclick = function() {
+          // 同じカード内の画像グループを取得
+          const parentCard = this.closest('.hobby-card');
+          currentImageGroup = Array.from(parentCard.querySelectorAll('.hobby-image'));
+          currentImageIndex = currentImageGroup.indexOf(this);
+          
+          showModal();
+        }
+      });
+
+      function showModal() {
+        modal.style.display = 'block';
+        updateModalImage();
+        
+        // ナビゲーションボタンの表示/非表示
+        if (currentImageGroup.length > 1) {
+          prevBtn.style.display = 'block';
+          nextBtn.style.display = 'block';
+        } else {
+          prevBtn.style.display = 'none';
+          nextBtn.style.display = 'none';
+        }
+      }
+
+      function updateModalImage() {
+        const currentImg = currentImageGroup[currentImageIndex];
+        modalImg.src = currentImg.src;
+        captionText.innerHTML = currentImg.alt;
+      }
+
+      // 前の画像
+      prevBtn.onclick = function() {
+        currentImageIndex = (currentImageIndex - 1 + currentImageGroup.length) % currentImageGroup.length;
+        updateModalImage();
+      }
+
+      // 次の画像
+      nextBtn.onclick = function() {
+        currentImageIndex = (currentImageIndex + 1) % currentImageGroup.length;
+        updateModalImage();
+      }
+
+      // 閉じるボタンクリック時
+      span.onclick = function() {
+        modal.style.display = 'none';
+      }
+
+      // モーダル背景クリック時
+      modal.onclick = function(event) {
+        if (event.target === modal) {
+          modal.style.display = 'none';
+        }
+      }
+
+      // キーボードイベント
+      document.addEventListener('keydown', function(event) {
+        if (modal.style.display === 'block') {
+          if (event.key === 'Escape') {
+            modal.style.display = 'none';
+          } else if (event.key === 'ArrowLeft') {
+            prevBtn.click();
+          } else if (event.key === 'ArrowRight') {
+            nextBtn.click();
+          }
+        }
+      });
+    </script>
+    
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
