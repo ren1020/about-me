@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// 画像ギャラリーのモーダル機能（hobby.htmlで使用）
+// 画像ギャラリーのモーダル機能（hobby.html、cat.htmlで使用）
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("imageModal");
   const modalImg = document.getElementById("modalImage");
@@ -37,8 +37,27 @@ document.addEventListener("DOMContentLoaded", function () {
     const galleryImages = document.querySelectorAll(".gallery-image");
     galleryImages.forEach((img) => {
       img.addEventListener("click", function () {
-        const gallery = this.closest(".hobby-card");
-        currentImages = Array.from(gallery.querySelectorAll(".gallery-image"));
+        // hobby.htmlの場合とcat.htmlの場合で異なるコンテナを探す
+        const hobbyGallery = this.closest(".hobby-card");
+        const catGallery = this.closest(".cat-category");
+
+        if (hobbyGallery) {
+          // hobby.htmlの場合
+          currentImages = Array.from(
+            hobbyGallery.querySelectorAll(".gallery-image")
+          );
+        } else if (catGallery) {
+          // cat.htmlの場合：同じカテゴリ内の画像を取得
+          currentImages = Array.from(
+            catGallery.querySelectorAll(".gallery-image")
+          );
+        } else {
+          // その他の場合：全ての画像を対象にする
+          currentImages = Array.from(
+            document.querySelectorAll(".gallery-image")
+          );
+        }
+
         currentImageIndex = currentImages.indexOf(this);
         showModal(this.src, this.alt);
       });
