@@ -11,8 +11,13 @@
   <body class="body">
     <header class="header">
       <nav class="nav">
-        <ul>
-          <li><a href="TOP.html">TOP</a></li>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">TOP</a></li>
           <li><a href="myprofile.html">MY PROFILE</a></li>
           <li><a href="hobby.html">HOBBY</a></li>
           <li><a href="cat.html">CAT</a></li>
@@ -29,7 +34,7 @@
 
         <div class="hobby-grid">
           <div class="hobby-card">
-            <div class="hobby-icon">�</div>
+            <div class="hobby-icon">🐈</div>
             <h3>猫動画の視聴</h3>
             <p>
               可愛い猫の動画を見るのが大好きです。YouTubeやTikTokで猫の面白い動画や癒される動画を探して視聴しています。特に子猫の動画は何時間でも見ていられます。
@@ -44,13 +49,33 @@
           <div class="hobby-card">
             <div class="hobby-icon">🎮</div>
             <h3>ゲーム</h3>
+            <div class="game-icons">
+              <div class="game-item">
+                <a href="https://genshin.hoyoverse.com/ja/home" target="_blank" class="game-link">
+                  <span class="game-icon">🌟</span>
+                  <span class="game-name">原神</span>
+                </a>
+              </div>
+              <div class="game-item">
+                <a href="https://www.minecraft.net/ja-jp" target="_blank" class="game-link">
+                  <span class="game-icon">🟫</span>
+                  <span class="game-name">Minecraft</span>
+                </a>
+              </div>
+              <div class="game-item">
+                <a href="https://playvalorant.com/ja-jp/" target="_blank" class="game-link">
+                  <span class="game-icon">🎯</span>
+                  <span class="game-name">Valorant</span>
+                </a>
+              </div>
+            </div>
             <p>
-              FPSゲームやRPGゲームが大好きです。友人とオンラインでプレイすることが多く、チームワークや戦略を考えることが楽しいです。
+              原神では美しい世界を冒険し、マインクラフトでは創造力を活かして建築を楽しんでいます。ヴァロラントでは友人とチームを組んで戦略的なFPSゲームを楽しみ、コミュニケーションとチームワークを大切にしています。
             </p>
             <div class="hobby-tags">
-              <span class="tag">FPS</span>
-              <span class="tag">RPG</span>
-              <span class="tag">オンライン</span>
+              <span class="tag">原神</span>
+              <span class="tag">Minecraft</span>
+              <span class="tag">Valorant</span>
             </div>
           </div>
 
@@ -58,18 +83,18 @@
             <div class="hobby-icon">🧁</div>
             <h3>お菓子作り</h3>
             <div class="hobby-images">
-              <img src="images/Image (14).jpeg" alt="手作りクッキー" class="hobby-image">
-              <img src="images/Image (3).jpeg" alt="手作り生チョコ" class="hobby-image">
-              <img src="images/Image (5).jpeg" alt="手作りパフェ" class="hobby-image">
-              <img src="images/Image (1).jpeg" alt="手作りガトーショコラ" class="hobby-image">
+              <img src="images/Image (14).jpeg" alt="手作りクッキー" class="gallery-image">
+              <img src="images/Image (3).jpeg" alt="手作り生チョコ" class="gallery-image">
+              <img src="images/Image (5).jpeg" alt="手作りパフェ" class="gallery-image">
+              <img src="images/Image (1).jpeg" alt="手作りガトーショコラ" class="gallery-image">
             </div>
             <p>
               休日にはクッキーやケーキ、カップケーキなどのお菓子作りを楽しんでいます。レシピを見ながら新しいお菓子に挑戦するのが楽しく、完成したお菓子を友人や家族と分け合っています。
             </p>
             <div class="hobby-tags">
               <span class="tag">クッキー</span>
-              <span class="tag">ケーキ</span>
-              <span class="tag">手作り</span>
+              <span class="tag">パフェ</span>
+              <span class="tag">ガトーショコラ</span>
             </div>
           </div>
 
@@ -77,17 +102,17 @@
             <div class="hobby-icon">🍰</div>
             <h3>スイーツ店巡り</h3>
             <div class="hobby-images">
-              <img src="images/Image (7).jpeg" alt="Panel Cafe" class="hobby-image">
-              <img src="images/Image (8).jpeg" alt="甘味屋" class="hobby-image">
-              <img src="images/Image (9).jpeg" alt="パンケーキ" class="hobby-image">
-              <img src="images/Image (15).jpeg" alt="パンケーキ" class="hobby-image">
+              <img src="images/Image (7).jpeg" alt="Panel Cafe" class="gallery-image">
+              <img src="images/Image (8).jpeg" alt="甘味屋" class="gallery-image">
+              <img src="images/Image (9).jpeg" alt="パンケーキ" class="gallery-image">
+              <img src="images/Image (15).jpeg" alt="パンケーキ" class="gallery-image">
             </div>
             <p>
               美味しいスイーツを求めて、様々なカフェやケーキ屋さんを巡っています。新しくオープンしたお店や話題のスイーツをチェックして、SNSでシェアするのも楽しみの一つです。
             </p>
             <div class="hobby-tags">
+              <span class="tag">パンケーキ</span>
               <span class="tag">カフェ</span>
-              <span class="tag">ケーキ</span>
               <span class="tag">SNS</span>
             </div>
           </div>
@@ -95,13 +120,29 @@
           <div class="hobby-card">
             <div class="hobby-icon">💼</div>
             <h3>アルバイト</h3>
+            <div class="work-places">
+              <div class="work-item">
+                <div class="work-icon">🇮🇹</div>
+                <div class="work-info">
+                  <h4>サイゼリヤ</h4>
+                  <p>ホール・キッチン業務</p>
+                </div>
+              </div>
+              <div class="work-item">
+                <div class="work-icon">🍗</div>
+                <div class="work-info">
+                  <h4>ケンタッキーフライドチキン</h4>
+                  <p>調理</p>
+                </div>
+              </div>
+            </div>
             <p>
-              学業と両立しながら、接客業のアルバイトをしています。お客様とのコミュニケーションを通じて、社会経験を積み、責任感やチームワークを学んでいます。
+              サイゼリヤではホールでの接客やキッチンでの調理補助を通じて、チームワークと効率的な作業を学びました。ケンタッキーでは接客スキルを磨き、お客様に笑顔で対応することの大切さを実感しています。両方のお店で、責任感と社会人としてのマナーを身につけています。
             </p>
             <div class="hobby-tags">
+              <span class="tag">サイゼリヤ</span>
+              <span class="tag">ケンタッキー</span>
               <span class="tag">接客</span>
-              <span class="tag">コミュニケーション</span>
-              <span class="tag">チームワーク</span>
             </div>
           </div>
       </section>
@@ -110,98 +151,15 @@
     <!-- 画像拡大モーダル -->
     <div id="imageModal" class="modal">
       <span class="close">&times;</span>
-      <img class="modal-content" id="modalImg">
+      <img class="modal-content" id="modalImage">
       <div id="caption"></div>
-      <a class="modal-nav prev" id="prevBtn">&#10094;</a>
-      <a class="modal-nav next" id="nextBtn">&#10095;</a>
+      <a class="modal-nav prev">&#10094;</a>
+      <a class="modal-nav next">&#10095;</a>
     </div>
     
     <footer class="footer">
-      <p>&copy; 2024 わたしの自己紹介サイト</p>
+      <p>&copy; 2025 わたしの自己紹介サイト</p>
     </footer>
-    
-    <script>
-      // 画像拡大機能
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImg');
-      const captionText = document.getElementById('caption');
-      const images = document.querySelectorAll('.hobby-image');
-      const span = document.getElementsByClassName('close')[0];
-      const prevBtn = document.getElementById('prevBtn');
-      const nextBtn = document.getElementById('nextBtn');
-      
-      let currentImageIndex = 0;
-      let currentImageGroup = [];
-
-      // 各画像にクリックイベントを追加
-      images.forEach(function(img, index) {
-        img.onclick = function() {
-          // 同じカード内の画像グループを取得
-          const parentCard = this.closest('.hobby-card');
-          currentImageGroup = Array.from(parentCard.querySelectorAll('.hobby-image'));
-          currentImageIndex = currentImageGroup.indexOf(this);
-          
-          showModal();
-        }
-      });
-
-      function showModal() {
-        modal.style.display = 'block';
-        updateModalImage();
-        
-        // ナビゲーションボタンの表示/非表示
-        if (currentImageGroup.length > 1) {
-          prevBtn.style.display = 'block';
-          nextBtn.style.display = 'block';
-        } else {
-          prevBtn.style.display = 'none';
-          nextBtn.style.display = 'none';
-        }
-      }
-
-      function updateModalImage() {
-        const currentImg = currentImageGroup[currentImageIndex];
-        modalImg.src = currentImg.src;
-        captionText.innerHTML = currentImg.alt;
-      }
-
-      // 前の画像
-      prevBtn.onclick = function() {
-        currentImageIndex = (currentImageIndex - 1 + currentImageGroup.length) % currentImageGroup.length;
-        updateModalImage();
-      }
-
-      // 次の画像
-      nextBtn.onclick = function() {
-        currentImageIndex = (currentImageIndex + 1) % currentImageGroup.length;
-        updateModalImage();
-      }
-
-      // 閉じるボタンクリック時
-      span.onclick = function() {
-        modal.style.display = 'none';
-      }
-
-      // モーダル背景クリック時
-      modal.onclick = function(event) {
-        if (event.target === modal) {
-          modal.style.display = 'none';
-        }
-      }
-
-      // キーボードイベント
-      document.addEventListener('keydown', function(event) {
-        if (modal.style.display === 'block') {
-          if (event.key === 'Escape') {
-            modal.style.display = 'none';
-          } else if (event.key === 'ArrowLeft') {
-            prevBtn.click();
-          } else if (event.key === 'ArrowRight') {
-            nextBtn.click();
-          }
-        }
-      });
-    </script>
     
     <script src="js/scripts.js"></script>
   </body>

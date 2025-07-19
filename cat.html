@@ -1,44 +1,164 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CAT</title>
-		<!-- reset.css ress -->
-		<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body class="body">
+    <!-- reset.css ress -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="body">
     <header class="header">
-        <nav class="nav">
-            <ul>
-                <li><a href="TOP.html">TOP</a></li>
-                <li><a href="myprofile.html">MY PROFILE</a></li>
-                <li><a href="hobby.html">HOBBY</a></li>
-                <li><a href="cat.html">CAT</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
-            </ul>
-        </nav>
-        <h1>わたしの自己紹介サイト</h1>
+      <nav class="nav">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="myprofile.html">MY PROFILE</a></li>
+          <li><a href="hobby.html">HOBBY</a></li>
+          <li><a href="cat.html">CAT</a></li>
+          <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+      </nav>
     </header>
     <main>
-        <section id="profile">
-            <h2>プロフィール</h2>
-            <p>こんにちは、わたしは[あなたの名前]です。これはわたしの自己紹介サイトです。</p>
-        </section>
-        <section id="hobbies">
-            <h2>趣味</h2>
-            <ul>
-                <li>読書</li>
-                <li>旅行</li>
-                <li>プログラミング</li>
-            </ul>
-        </section>
+      <section id="cat">
+        <h1>猫の写真ギャラリー</h1>
+        <p class="cat-description">
+          可愛い愛しの飼い猫たちの写真をご紹介します。癒しの時間をお楽しみください。
+        </p>
+
+        <div class="cat-gallery">
+          <div class="cat-category">
+            <h2>幸</h2>
+            <div class="cat-images">
+              <img
+                src="images/kou1.jpeg"
+                alt="隠れる幸"
+                class="gallery-image"
+              />
+              <img
+                src="images/kou2.jpeg"
+                alt="階段にいる幸"
+                class="gallery-image"
+              />
+              <img
+                src="images/kou3.jpeg"
+                alt="炊飯器の中の幸"
+                class="gallery-image"
+              />
+              <img
+                src="images/kou4.jpeg"
+                alt="毛布でくつろぐ幸"
+                class="gallery-image"
+              />
+            </div>
+          </div>
+
+          <div class="cat-category">
+            <h2>福</h2>
+            <div class="cat-images">
+              <img
+                src="images/fuku1.jpeg"
+                alt="美しい成猫"
+                class="gallery-image"
+              />
+              <img
+                src="images/fuku2.jpeg"
+                alt="くつろぐ猫"
+                class="gallery-image"
+              />
+              <img
+                src="images/fuku3.jpeg"
+                alt="賢そうな猫"
+                class="gallery-image"
+              />
+              <img
+                src="images/fuku4.jpeg"
+                alt="毛づくろいする猫"
+                class="gallery-image"
+              />
+            </div>
+          </div>
+
+          <div class="cat-category">
+            <h2>KAN</h2>
+            <div class="cat-images">
+              <img
+                src="images/kan1.jpeg"
+                alt="面白いポーズの猫"
+                class="gallery-image"
+              />
+              <img
+                src="images/kan2.jpeg"
+                alt="変な顔の猫"
+                class="gallery-image"
+              />
+              <img
+                src="images/kan3.jpeg"
+                alt="おもしろい猫"
+                class="gallery-image"
+              />
+              <img
+                src="images/kan4.jpeg"
+                alt="愉快な猫"
+                class="gallery-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="cat-facts">
+          <h2>🐾 猫の豆知識</h2>
+          <div class="facts-grid">
+            <div class="fact-card">
+              <div class="fact-icon">😴</div>
+              <h3>睡眠時間</h3>
+              <p>
+                猫は1日に12～16時間も眠ります。これは狩りのエネルギーを温存するためです。
+              </p>
+            </div>
+            <div class="fact-card">
+              <div class="fact-icon">👂</div>
+              <h3>聴覚</h3>
+              <p>
+                猫の聴覚は人間の約10倍も優れており、高い音を特によく聞くことができます。
+              </p>
+            </div>
+            <div class="fact-card">
+              <div class="fact-icon">🐾</div>
+              <h3>肉球</h3>
+              <p>
+                猫の肉球は温度を感じるセンサーの役割もあり、獲物や危険を察知します。
+              </p>
+            </div>
+            <div class="fact-card">
+              <div class="fact-icon">😺</div>
+              <h3>表情</h3>
+              <p>
+                猫は30種類以上の鳴き声を使い分けて、人間とコミュニケーションを取ります。
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- 画像拡大モーダル -->
+    <div id="imageModal" class="modal">
+      <span class="close">&times;</span>
+      <img class="modal-content" id="modalImage" />
+      <div id="caption"></div>
+      <a class="modal-nav prev">&#10094;</a>
+      <a class="modal-nav next">&#10095;</a>
+    </div>
     <footer class="footer">
-        <p>&copy; 2024 わたしの自己紹介サイト</p>
+      <p>&copy; 2025 わたしの自己紹介サイト</p>
     </footer>
     <script src="js/scripts.js"></script>
-</body>
+  </body>
 </html>
-
