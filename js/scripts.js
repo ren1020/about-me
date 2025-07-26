@@ -1,3 +1,51 @@
+// ページフェード効果
+document.addEventListener("DOMContentLoaded", function () {
+  // ページ読み込み完了時にloadedクラスを追加
+  window.addEventListener("load", function () {
+    document.body.classList.add("loaded");
+  });
+
+  // すべてのリンクにフェードアウト効果を追加
+  const links = document.querySelectorAll("a[href]");
+
+  links.forEach((link) => {
+    // 外部リンクや特殊なリンクは除外
+    if (
+      link.href.startsWith("http") &&
+      !link.href.includes(window.location.hostname)
+    ) {
+      return; // 外部リンクはスキップ
+    }
+    if (link.href.startsWith("mailto:")) {
+      return; // メールリンクはスキップ
+    }
+    if (link.getAttribute("target") === "_blank") {
+      return; // 新しいタブで開くリンクはスキップ
+    }
+
+    link.addEventListener("click", function (e) {
+      // 同じページ内のリンク（#付き）は除外
+      if (
+        this.href.includes("#") &&
+        this.href.split("#")[0] === window.location.href.split("#")[0]
+      ) {
+        return;
+      }
+
+      e.preventDefault();
+      const href = this.href;
+
+      // フェードアウト効果
+      document.body.classList.add("page-fade-out");
+
+      // 少し遅れてページを移動
+      setTimeout(() => {
+        window.location.href = href;
+      }, 400);
+    });
+  });
+});
+
 // ハンバーガーメニューの動作
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.querySelector(".hamburger");

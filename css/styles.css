@@ -1,16 +1,43 @@
 /* ===========================================
-   共通基本スタイル
+   ページフェードイン効果
    =========================================== */
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Abril Fatface", "Noto Sans JP", "Segoe UI", Tahoma, Geneva,
+    Verdana, sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 50%, #e8f5e8 100%);
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
+  color: #2c3e50;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+body.loaded {
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ページアウト効果用 */
+body.page-fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease-in-out;
 }
 
 main {
@@ -31,14 +58,289 @@ body.top-page main {
   min-height: 100vh;
 }
 
+/* MYPROFILEページ専用の背景 */
+body.myprofile-page {
+  background: url("../images/back6.jpeg") center 80% / cover no-repeat,
+    linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 50%, #e8f5e8 100%);
+  background-attachment: fixed;
+}
+
+/* MYPROFILEページのコンテンツエリア - 背景なし */
+body.myprofile-page main {
+  background-color: transparent;
+  margin: 2rem;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 2rem;
+}
+
+/* MYPROFILEページの専用スタイル - 北海道の雪と氷の世界（軽量化版） */
+body.myprofile-page #profile {
+  position: relative;
+  /* 軽量化された北海道風背景 */
+  background: linear-gradient(
+    135deg,
+    rgba(240, 248, 255, 0.95) 0%,
+    rgba(225, 245, 254, 0.92) 50%,
+    rgba(187, 222, 251, 0.9) 100%
+  );
+  /* 軽量化されたシャドウ */
+  box-shadow: 0 20px 60px rgba(33, 150, 243, 0.25),
+    inset 0 4px 16px rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  border: 2px solid rgba(144, 202, 249, 0.3);
+  /* 北海道のアニメーションは維持 */
+  animation: hokkaido-frost 8s ease-in-out infinite;
+  transition: all 0.6s ease;
+}
+
+/* 北海道の寒風と雪のアニメーション（軽量化版） */
+@keyframes hokkaido-frost {
+  0%,
+  100% {
+    box-shadow: 0 20px 60px rgba(33, 150, 243, 0.25),
+      inset 0 4px 16px rgba(255, 255, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 25px 70px rgba(33, 150, 243, 0.35),
+      inset 0 6px 20px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* ホバー時の北海道エフェクト（軽量化版） */
+body.myprofile-page #profile:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(33, 150, 243, 0.35),
+    inset 0 8px 24px rgba(255, 255, 255, 0.8);
+  animation: hokkaido-blizzard 2s ease infinite;
+}
+
+@keyframes hokkaido-blizzard {
+  0%,
+  100% {
+    filter: brightness(1) contrast(1);
+  }
+  50% {
+    filter: brightness(1.1) contrast(1.05);
+  }
+}
+
+body.myprofile-page #profile h1 {
+  position: relative;
+  /* 軽量化された氷河グラデーション */
+  background: linear-gradient(
+    135deg,
+    #0d47a1 0%,
+    #1976d2 25%,
+    #42a5f5 50%,
+    #1976d2 75%,
+    #0d47a1 100%
+  );
+  background-size: 300% 300%;
+  animation: hokkaido-title 6s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* 軽量化されたテキストシャドウ */
+  text-shadow: 0 0 10px rgba(33, 150, 243, 0.5),
+    0 0 20px rgba(187, 222, 251, 0.3);
+  /* 雪の結晶装飾 */
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* 雪の結晶装飾 */
+body.myprofile-page #profile h1::before,
+body.myprofile-page #profile h1::after {
+  content: "❄️";
+  position: absolute;
+  font-size: 1.5rem;
+  animation: snowflake-dance 4s ease infinite;
+  opacity: 0.8;
+}
+
+body.myprofile-page #profile h1::before {
+  top: 10px;
+  left: -20px;
+  animation-delay: 0s;
+}
+
+body.myprofile-page #profile h1::after {
+  top: 10px;
+  right: -20px;
+  animation-delay: 2s;
+}
+
+@keyframes hokkaido-title {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes snowflake-dance {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: rotate(180deg) scale(0.9);
+    opacity: 0.6;
+  }
+  75% {
+    transform: rotate(270deg) scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+body.myprofile-page #profile h2 {
+  position: relative;
+  color: #0d47a1;
+  font-weight: bold;
+  margin: 2rem 0 1rem 0;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(227, 242, 253, 0.8) 0%,
+    rgba(187, 222, 251, 0.6) 100%
+  );
+  border-radius: 25px;
+  border: 2px solid rgba(33, 150, 243, 0.25);
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
+  text-shadow: 0 1px 2px rgba(33, 150, 243, 0.2);
+}
+
+body.myprofile-page #profile p {
+  position: relative;
+  /* 軽量化された北海道風背景 */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 248, 255, 0.9) 50%,
+    rgba(227, 242, 253, 0.85) 100%
+  );
+  /* シンプルなボーダー */
+  border-left: 5px solid #1976d2;
+  border-right: 2px solid rgba(33, 150, 243, 0.25);
+  border-top: 1px solid rgba(187, 222, 251, 0.4);
+  border-bottom: 1px solid rgba(144, 202, 249, 0.3);
+  color: #0d47a1;
+  font-weight: 600;
+  padding: 1.5rem 2rem;
+  margin: 1rem 0;
+  border-radius: 0 15px 15px 0;
+  /* 軽量化されたシャドウ */
+  box-shadow: 0 4px 16px rgba(33, 150, 243, 0.15);
+  transition: all 0.3s ease;
+}
+
+body.myprofile-page #profile p:hover {
+  transform: translateX(8px);
+  border-left-width: 8px;
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.25);
+}
+
+/* HOBBYページ専用の背景 */
+body.hobby-page {
+  background: url("../images/back5.jpeg") center center / cover no-repeat,
+    linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 50%, #e8f5e8 100%);
+  background-attachment: fixed;
+}
+
+/* CATページ専用の背景 */
+body.cat-page {
+  background: url("../images/back7.jpeg") center center / cover no-repeat,
+    linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 50%, #e8f5e8 100%);
+  background-attachment: fixed;
+}
+
+/* CONTACTページ専用の背景 */
+body.contact-page {
+  background: url("../images/back8.jpeg") center center / cover no-repeat,
+    linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 50%, #e8f5e8 100%);
+  background-attachment: fixed;
+}
+
+/* HOBBYページのコンテンツエリア - 背景なし */
+body.hobby-page main {
+  background-color: transparent;
+  margin: 2rem;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 2rem;
+}
+
+/* CATページのコンテンツエリア - 背景なし */
+body.cat-page main {
+  background-color: transparent;
+  margin: 2rem;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 2rem;
+}
+
+/* CONTACTページのコンテンツエリア - 背景なし */
+body.contact-page main {
+  background-color: transparent;
+  margin: 2rem;
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 2rem;
+}
+
+/* HOBBYページの専用スタイル - ビーチ背景に映えるように（軽量化版） */
+body.hobby-page #hobby {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.93) 0%,
+    rgba(248, 252, 255, 0.89) 100%
+  );
+  border: 2px solid rgba(33, 150, 243, 0.25);
+  box-shadow: 0 16px 48px rgba(0, 100, 200, 0.12);
+}
+
+body.hobby-page #hobby h1 {
+  background: linear-gradient(135deg, #0277bd, #0288d1, #03a9f4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.hobby-page .hobby-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(240, 248, 255, 0.92) 100%
+  );
+  border: 2px solid rgba(3, 169, 244, 0.15);
+  box-shadow: 0 8px 30px rgba(3, 169, 244, 0.15);
+  backdrop-filter: blur(8px);
+}
+
 /* ===========================================
    ヘッダー・ナビゲーション
    =========================================== */
 .header {
-  background: #333;
+  background: linear-gradient(135deg, #1976d2, #2196f3, #42a5f5);
   color: #fff;
   padding: 1rem 0;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
 }
 
 .nav-menu {
@@ -56,6 +358,15 @@ body.top-page main {
 .nav-menu li a {
   color: #fff;
   text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.nav-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 /* ===========================================
@@ -81,11 +392,13 @@ body.top-page main {
 .hero-content {
   text-align: center;
   color: white;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: rgba(25, 118, 210, 0.8);
+  backdrop-filter: blur(10px);
   padding: 2rem;
-  border-radius: 10px;
+  border-radius: 15px;
   width: 90%;
   max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hero-content h1 {
@@ -103,7 +416,6 @@ body.top-page main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
 }
 
 .hero-nav a {
@@ -113,15 +425,16 @@ body.top-page main {
   font-weight: bold;
   padding: 1rem 2rem;
   border: 2px solid white;
-  border-radius: 8px;
+  border-radius: 20px;
   transition: all 0.3s ease;
   display: block;
 }
 
 .hero-nav a:hover {
-  background-color: white;
-  color: #333;
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #2196f3, #42a5f5);
+  color: white;
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
 }
 
 /* ===========================================
@@ -167,11 +480,12 @@ body.top-page main {
 .footer {
   text-align: center;
   padding: 2rem;
-  background: #333;
+  background: linear-gradient(135deg, #2c2c2c, #3a3a3a, #444444);
   color: #fff;
   position: static;
   width: 100%;
   margin-top: auto;
+  box-shadow: 0 -4px 12px rgba(44, 44, 44, 0.3);
 }
 
 /* ===========================================
@@ -184,9 +498,15 @@ body.top-page main {
   margin: 2rem auto 2rem;
   padding: 3rem 2rem;
   text-align: center;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 251, 255, 0.92) 100%
+  );
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(25, 118, 210, 0.2);
+  border: 2px solid rgba(33, 150, 243, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 #hobby {
@@ -197,15 +517,20 @@ body.top-page main {
 #contact h1,
 #hobby h1 {
   font-size: 3rem;
-  color: #333;
+  color: #2c3e50;
   margin-bottom: 3rem;
-  border-bottom: 3px solid #0bd;
+  border-bottom: 4px solid #2196f3;
   padding-bottom: 1rem;
+  background: linear-gradient(135deg, #2196f3, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
 }
 
 #profile h2 {
   font-size: 2rem;
-  color: #555;
+  color: #34495e;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   font-weight: bold;
@@ -213,12 +538,13 @@ body.top-page main {
 
 #profile p {
   font-size: 1.8rem;
-  color: #666;
+  color: #2c3e50;
   margin-bottom: 1.5rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  border-left: 4px solid #0bd;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e3f2fd, #f0f8ff);
+  border-radius: 15px;
+  border-left: 4px solid #2196f3;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
 }
 
 /* ===========================================
@@ -257,39 +583,43 @@ body.top-page main {
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 1rem;
-  border: 2px solid #e9ecef;
-  border-radius: 8px;
+  padding: 1.2rem;
+  border: 2px solid #e1f5fe;
+  border-radius: 12px;
   font-size: 1rem;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
   box-sizing: border-box;
+  background: linear-gradient(135deg, #ffffff, #f8fbff);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #0bd;
-  box-shadow: 0 0 0 3px rgba(0, 187, 221, 0.1);
+  border-color: #2196f3;
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15);
+  transform: translateY(-2px);
 }
 
 .submit-btn {
-  background: linear-gradient(135deg, #0bd, #0090aa);
+  background: linear-gradient(135deg, #2196f3, #42a5f5, #1976d2);
   color: white;
-  padding: 1rem 3rem;
+  padding: 1.2rem 3.5rem;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   display: block;
   margin: 0 auto;
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
 }
 
 .submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 187, 221, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(33, 150, 243, 0.4);
+  filter: brightness(1.1);
 }
 
 /* お問い合わせ情報 */
@@ -347,17 +677,19 @@ body.top-page main {
 }
 
 .hobby-card {
-  background-color: #f8f9fa;
-  border-radius: 15px;
-  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+  border-radius: 18px;
+  padding: 2.5rem;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #e9ecef;
+  border: 2px solid rgba(33, 150, 243, 0.1);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.1);
 }
 
 .hobby-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(33, 150, 243, 0.2);
+  border-color: #2196f3;
 }
 
 .hobby-icon {
@@ -936,17 +1268,56 @@ body.top-page main {
   margin: 2rem auto 2rem;
   padding: 3rem 2rem;
   text-align: center;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  /* 軽量化されたベース形状 */
+  background: linear-gradient(145deg, #fff8f8, #ffffff);
+  border-radius: 20px;
+  /* 軽量化されたシャドウ */
+  box-shadow: 0 20px 60px rgba(230, 230, 230, 0.4),
+    inset 0 4px 16px rgba(255, 255, 255, 0.6), 0 0 40px rgba(255, 105, 180, 0.2);
+  transition: all 0.6s ease;
+  /* 軽量化された装飾ボーダー */
+  border: 2px solid rgba(255, 182, 193, 0.25);
 }
 
 #cat h1 {
-  font-size: 3rem;
-  color: #333;
+  font-family: "Abril Fatface", cursive;
+  font-size: 3.5rem;
   margin-bottom: 3rem;
-  border-bottom: 3px solid #0bd;
-  padding-bottom: 1rem;
+  padding: 1.5rem 2rem;
+  position: relative;
+  /* 軽量化された猫らしいグラデーション（アニメーション維持） */
+  background: linear-gradient(
+    135deg,
+    #ff69b4 0%,
+    #ff1493 25%,
+    #ffa500 50%,
+    #ffd700 75%,
+    #ff69b4 100%
+  );
+  background-size: 400% 400%;
+  animation: catTitleGradient 8s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 400;
+  /* 軽量化されたテキストシャドウ */
+  text-shadow: 0 0 15px rgba(255, 105, 180, 0.5),
+    0 0 30px rgba(255, 20, 147, 0.3);
+  border: none;
+  color: transparent;
+}
+
+@keyframes catTitleGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .cat-description {
@@ -965,10 +1336,53 @@ body.top-page main {
 }
 
 .cat-category h2 {
-  font-size: 2rem;
-  color: #333;
+  font-family: "Abril Fatface", cursive;
+  font-size: 2.5rem;
+  color: #ff69b4;
   margin-bottom: 2rem;
+  position: relative;
   text-align: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb);
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
+  transition: all 0.3s ease;
+}
+
+.cat-category h2:hover {
+  transform: scale(1.05) rotate(2deg);
+  box-shadow: 0 12px 30px rgba(255, 105, 180, 0.4);
+}
+
+/* 猫カテゴリのタイトルに肉球装飾 */
+#cat .cat-category h2::before,
+#cat .cat-category h2::after {
+  content: "🐾";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: pawBounce 2s ease infinite;
+}
+
+#cat .cat-category h2::before {
+  left: -40px;
+  animation-delay: 0s;
+}
+
+#cat .cat-category h2::after {
+  right: -40px;
+  animation-delay: 1s;
+}
+
+@keyframes pawBounce {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-60%) scale(1.2);
+  }
 }
 
 .cat-images {
@@ -1030,4 +1444,441 @@ body.top-page main {
   color: #666;
   line-height: 1.6;
   text-align: left;
+}
+
+/* ===========================================
+   CONTACTページの専用スタイル - back8.jpegの背景に映えるように */
+body.contact-page #contact {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(240, 248, 255, 0.9) 50%,
+    rgba(248, 251, 255, 0.9) 100%
+  );
+  border: 2px solid rgba(66, 165, 245, 0.3);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(15px);
+}
+
+body.contact-page #contact h1 {
+  background: linear-gradient(135deg, #1976d2, #2196f3, #42a5f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.contact-page .contact-form .form-group input,
+body.contact-page .contact-form .form-group select,
+body.contact-page .contact-form .form-group textarea {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(248, 251, 255, 0.9) 100%
+  );
+  border: 2px solid rgba(33, 150, 243, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+body.contact-page .contact-info {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(240, 248, 255, 0.85) 100%
+  );
+  border: 2px solid rgba(33, 150, 243, 0.15);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+body.contact-page .contact-item {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(240, 248, 255, 0.9) 100%
+  );
+  border: 2px solid rgba(3, 169, 244, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+/* ===========================================
+   猫ページ
+   =========================================== */
+
+/* 猫の耳のような装飾 - 可愛いポイント */
+#cat::before,
+#cat::after {
+  content: "";
+  position: absolute;
+  top: -15px;
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(135deg, #ffb6c1, #ffc0cb, #ffe4e1);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+  z-index: 2;
+}
+
+#cat::before {
+  left: 45%;
+  animation: earWiggleLeft 6s ease infinite;
+}
+
+#cat::after {
+  right: 45%;
+  animation: earWiggleRight 6s ease infinite;
+}
+
+@keyframes earWiggleLeft {
+  0%,
+  100% {
+    transform: rotate(-5deg) scale(1);
+  }
+  25% {
+    transform: rotate(-10deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    transform: rotate(-8deg) scale(1.02);
+  }
+}
+
+@keyframes earWiggleRight {
+  0%,
+  100% {
+    transform: rotate(5deg) scale(1);
+  }
+  25% {
+    transform: rotate(10deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(0deg) scale(1);
+  }
+  75% {
+    transform: rotate(8deg) scale(1.02);
+  }
+}
+
+/* ホバー効果で猫らしい動き（軽量化版） */
+#cat:hover {
+  transform: translateY(-8px) scale(1.01) rotate(0.5deg);
+  box-shadow: 0 25px 80px rgba(230, 230, 230, 0.5),
+    0 0 60px rgba(255, 105, 180, 0.3);
+  animation: catPurr 2s ease infinite;
+}
+
+@keyframes catPurr {
+  0%,
+  100% {
+    transform: translateY(-8px) scale(1.01) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.015) rotate(-0.5deg);
+  }
+}
+
+/* 猫の足跡パターン装飾（軽量化版） */
+#cat .cat-description::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 20px;
+  background: radial-gradient(
+      circle at 25% 50%,
+      rgba(255, 105, 180, 0.3) 25%,
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 105, 180, 0.3) 25%,
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 75% 50%,
+      rgba(255, 105, 180, 0.3) 25%,
+      transparent 26%
+    );
+  animation: pawPrints 4s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes pawPrints {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* 英字フォント（Abril Fatface）を適用する要素 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.nav-menu a,
+.hero-nav a,
+button,
+.btn,
+.submit-btn,
+.instagram-link,
+.profile-instagram {
+  font-family: "Abril Fatface", "Noto Sans JP", serif;
+}
+
+/* 日本語テキスト用フォント */
+p,
+.cat-description,
+.hobby-description,
+.contact-description,
+label,
+textarea,
+input,
+select {
+  font-family: "Noto Sans JP", "Segoe UI", sans-serif;
+}
+
+/* 豆知識カードを肉球風の可愛いデザインに（軽量化版） */
+#cat .fact-card {
+  background: linear-gradient(145deg, #fff5f5, #ffffff);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  /* 肉球の形状 */
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 20px rgba(240, 230, 230, 0.5),
+    0 4px 12px rgba(255, 182, 193, 0.2);
+  transition: all 0.4s ease;
+  border: 2px solid rgba(255, 182, 193, 0.25);
+  margin: 1rem auto;
+  cursor: pointer;
+}
+
+#cat .fact-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  border-radius: 45%;
+  box-shadow: 0 15px 30px rgba(240, 230, 230, 0.6),
+    0 20px 40px rgba(255, 105, 180, 0.25);
+  animation: pawWiggle 0.6s ease;
+}
+
+@keyframes pawWiggle {
+  0%,
+  100% {
+    transform: translateY(-10px) scale(1.05) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.05) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-10px) scale(1.05) rotate(2deg);
+  }
+}
+
+/* 小さな肉球を追加（軽量化版） */
+#cat .fact-card::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 30%;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(45deg, #ffb6c1, #ffc0cb);
+  border-radius: 50%;
+  box-shadow: 20px 0 0 -1px #ffb6c1;
+}
+
+#cat .fact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.2));
+}
+
+#cat .fact-card h3 {
+  font-size: 1.2rem;
+  color: #d63384;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-family: "Abril Fatface", cursive;
+}
+
+#cat .fact-card p {
+  color: #666;
+  line-height: 1.4;
+  font-size: 0.85rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* 北海道風のプロフィールSNSセクション */
+body.myprofile-page .profile-social {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(187, 222, 251, 0.3) 0%,
+    rgba(227, 242, 253, 0.4) 50%,
+    rgba(144, 202, 249, 0.3) 100%
+  );
+  border-radius: 20px;
+  border: 2px solid rgba(33, 150, 243, 0.2);
+  box-shadow: 0 8px 24px rgba(33, 150, 243, 0.15),
+    inset 0 4px 8px rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+body.myprofile-page .profile-social h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #0d47a1;
+  position: relative;
+}
+
+body.myprofile-page .profile-social h2::before {
+  content: "🏔️";
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+body.myprofile-page .profile-social h2::after {
+  content: "❄️";
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  animation: snowflake-dance 3s ease infinite;
+}
+
+/* 北海道風のInstagramリンク */
+body.myprofile-page .profile-instagram {
+  background: linear-gradient(
+    135deg,
+    #0d47a1 0%,
+    #1565c0 25%,
+    #1976d2 50%,
+    #42a5f5 75%,
+    #81c784 100%
+  );
+  color: white;
+  padding: 1.2rem 2.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 1rem;
+  /* 氷のような質感 */
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3), 0 0 30px rgba(33, 150, 243, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 北海道の雪景色エフェクト */
+body.myprofile-page .profile-instagram::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+body.myprofile-page .profile-instagram:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(33, 150, 243, 0.5),
+    inset 0 3px 6px rgba(255, 255, 255, 0.4), 0 0 50px rgba(33, 150, 243, 0.3);
+  filter: brightness(1.1);
+}
+
+body.myprofile-page .profile-instagram:hover::before {
+  opacity: 1;
+  animation: hokkaido-shine 1.5s ease-in-out;
+}
+
+@keyframes hokkaido-shine {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  50% {
+    transform: translateX(0%) translateY(0%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* 北海道の背景パターン追加 */
+body.myprofile-page #profile::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(
+      circle at 15% 25%,
+      rgba(255, 255, 255, 0.3) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(187, 222, 251, 0.4) 1.5px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle at 75% 85%,
+      rgba(255, 255, 255, 0.3) 2px,
+      transparent 2px
+    ),
+    radial-gradient(
+      circle at 25% 75%,
+      rgba(144, 202, 249, 0.2) 1px,
+      transparent 1px
+    );
+  background-size: 100px 100px, 150px 150px, 120px 120px, 80px 80px;
+  z-index: -1;
+  border-radius: inherit;
+  animation: snow-pattern 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snow-pattern {
+  0% {
+    background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+  100% {
+    background-position: 100px 100px, 150px 150px, 120px 120px, 80px 80px;
+  }
 }
