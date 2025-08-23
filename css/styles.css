@@ -2,18 +2,33 @@
    ページフェードイン効果
    =========================================== */
 body {
-  font-family: "Abril Fatface", "Noto Sans JP", "Segoe UI", Tahoma, Geneva,
-    Verdana, sans-serif;
+  font-family: "Abril Fatface", "Noto Sans JP", "SF Pro Display", "Segoe UI",
+    sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #e3f2fd 0%, #f1f8e9 50%, #e8f5e8 100%);
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(0, 255, 255, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 0, 150, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 80%,
+      rgba(50, 255, 50, 0.02) 0%,
+      transparent 50%
+    ),
+    linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 30%, #16213e 60%, #0f0f23 100%);
   background-attachment: fixed;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   overflow-x: hidden;
-  color: #2c3e50;
+  color: #e0e6ed;
   opacity: 0;
   animation: fadeIn 1s ease-out forwards;
 }
@@ -42,7 +57,7 @@ body.page-fade-out {
 
 main {
   flex: 1;
-  width: 100vw;
+  width: 100%;
   position: relative;
   z-index: 1;
   padding-top: 2rem;
@@ -336,11 +351,34 @@ body.hobby-page .hobby-card {
    ヘッダー・ナビゲーション
    =========================================== */
 .header {
-  background: linear-gradient(135deg, #1976d2, #2196f3, #42a5f5);
-  color: #fff;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e0e6ed;
   padding: 1rem 0;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 30, 30, 0.03) 0%,
+    rgba(50, 50, 50, 0.03) 50%,
+    rgba(30, 30, 30, 0.03) 100%
+  );
+  z-index: -1;
 }
 
 .nav-menu {
@@ -352,21 +390,52 @@ body.hobby-page .hobby-card {
 }
 
 .nav-menu li {
-  margin: 0.5rem 1rem;
+  margin: 0;
 }
 
 .nav-menu li a {
-  color: #fff;
+  color: #e0e6ed;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-menu li a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.5s ease;
 }
 
 .nav-menu li a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.5);
+  color: #00ffff;
   transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2), 0 0 20px rgba(0, 255, 255, 0.1);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.nav-menu li a:hover::before {
+  left: 100%;
 }
 
 /* ===========================================
@@ -480,12 +549,29 @@ body.hobby-page .hobby-card {
 .footer {
   text-align: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #2c2c2c, #3a3a3a, #444444);
-  color: #fff;
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0, 255, 255, 0.1);
+  color: #e0e6ed;
   position: static;
   width: 100%;
   margin-top: auto;
-  box-shadow: 0 -4px 12px rgba(44, 44, 44, 0.3);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer:hover p {
+  opacity: 1;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 /* ===========================================
@@ -498,15 +584,54 @@ body.hobby-page .hobby-card {
   margin: 2rem auto 2rem;
   padding: 3rem 2rem;
   text-align: center;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(248, 251, 255, 0.92) 100%
-  );
+  background: rgba(10, 10, 15, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: 20px;
-  box-shadow: 0 12px 40px rgba(25, 118, 210, 0.2);
-  border: 2px solid rgba(33, 150, 243, 0.15);
-  backdrop-filter: blur(10px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+#profile::before,
+#contact::before,
+#hobby::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 30% 30%,
+      rgba(0, 255, 255, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 70% 70%,
+      rgba(255, 0, 150, 0.03) 0%,
+      transparent 50%
+    );
+  border-radius: 20px;
+  animation: cyber-aurora-bg 6s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes cyber-aurora-bg {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1) rotate(0deg);
+  }
+  33% {
+    opacity: 0.6;
+    transform: scale(1.02) rotate(1deg);
+  }
+  66% {
+    opacity: 0.4;
+    transform: scale(0.98) rotate(-1deg);
+  }
 }
 
 #hobby {
@@ -517,15 +642,30 @@ body.hobby-page .hobby-card {
 #contact h1,
 #hobby h1 {
   font-size: 3rem;
-  color: #2c3e50;
-  margin-bottom: 3rem;
-  border-bottom: 4px solid #2196f3;
-  padding-bottom: 1rem;
-  background: linear-gradient(135deg, #2196f3, #42a5f5);
+  background: linear-gradient(135deg, #00ffff, #ff0096, #00ff32, #00ffff);
+  background-size: 300% 300%;
+  animation: cyber-title-flow 4s ease-in-out infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  margin-bottom: 3rem;
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+  padding-bottom: 1rem;
   font-weight: 700;
+  letter-spacing: 2px;
+}
+
+@keyframes cyber-title-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 #profile h2 {
@@ -841,6 +981,39 @@ body.hobby-page .hobby-card {
   right: 20px;
 }
 
+/* 画像モーダル（インライン拡大対応の調整） */
+.modal.inline-mode {
+  display: block;
+}
+
+.modal.inline-mode .modal-content {
+  position: fixed;
+  margin: 0; /* 既定の中央寄せを無効化 */
+  max-width: none;
+  max-height: none;
+  object-fit: contain;
+  animation: none; /* 既存のzoomアニメを無効化（JS側で制御） */
+}
+
+/* キャプションは画像の直下に追従させるため中央配置幅を解除 */
+.modal.inline-mode #caption {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 24px;
+  width: auto;
+  max-width: min(90vw, 900px);
+  height: auto;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+/* ナビゲーション矢印は従来通り固定 */
+.modal.inline-mode .modal-nav {
+  position: fixed;
+}
+
 /* ===========================================
    ハンバーガーメニュー
    =========================================== */
@@ -858,10 +1031,12 @@ body.hobby-page .hobby-card {
 .hamburger span {
   width: 25px;
   height: 3px;
-  background-color: #fff;
+  background: linear-gradient(90deg, #00ffff, #ff0096);
   margin: 3px 0;
   transition: 0.3s;
   display: block;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
 }
 
 .hamburger.active span:nth-child(1) {
@@ -907,7 +1082,8 @@ body.hobby-page .hobby-card {
     right: -100%;
     width: 100%;
     height: 100vh;
-    background-color: rgba(51, 51, 51, 0.98);
+    background: rgba(10, 10, 15, 0.98);
+    backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -924,15 +1100,20 @@ body.hobby-page .hobby-card {
   }
 
   .nav-menu li a {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 1rem 2rem;
-    border-radius: 8px;
+    border-radius: 25px;
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 255, 0.2);
   }
 
   .nav-menu li a:hover {
-    background-color: #0bd;
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00ffff;
+    color: #00ffff;
     transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
   }
 
   .header,
@@ -1881,4 +2062,132 @@ body.myprofile-page #profile::before {
   100% {
     background-position: 100px 100px, 150px 150px, 120px 120px, 80px 80px;
   }
+}
+
+/* ===========================================
+   � PAW CURSOR SYSTEM (肉球カーソルシステム)
+   =========================================== */
+
+/* カスタム肉球カーソル */
+.cat-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 1.8rem;
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.15s ease, opacity 0.3s ease;
+  filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.6));
+  user-select: none;
+  animation: pawCursorBounce 2s ease-in-out infinite;
+}
+
+@keyframes pawCursorBounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* ホバー時の肉球カーソル */
+.cat-cursor.hover {
+  transform: scale(1.4);
+  filter: drop-shadow(0 0 18px rgba(255, 0, 150, 0.8));
+  animation: none;
+}
+
+/* クリック時の肉球カーソル */
+.cat-cursor.click {
+  transform: scale(0.9);
+  filter: drop-shadow(0 0 20px rgba(0, 255, 0, 0.9));
+  animation: none;
+}
+
+/* 肉球の足跡トレイル */
+.cat-paw-trail {
+  position: fixed;
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0.8;
+  animation: pawTrailFade 1.5s ease-out forwards;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.5));
+  user-select: none;
+}
+
+@keyframes pawTrailFade {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+/* ===========================================
+   ヘッダーのアニメーション無効化（動きを全て停止）
+   =========================================== */
+.header,
+.header::before {
+  animation: none !important;
+}
+
+/* ナビリンクのトランジション/走査演出を停止 */
+.nav-menu li a,
+.nav-menu li a::before {
+  transition: none !important;
+}
+.nav-menu li a::before {
+  display: none !important; /* スキャン光を非表示 */
+}
+
+/* ホバー時の移動/発光を停止（色変化は残す場合は背景のみ） */
+.nav-menu li a:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* ハンバーガーのアニメーションを停止（瞬時に切替） */
+.hamburger span {
+  transition: none !important;
+}
+
+/* モバイルメニューのスライドアニメーションを停止 */
+@media (max-width: 600px) {
+  .nav-menu {
+    transition: none !important; /* right のアニメーションを無効化 */
+  }
+  .nav-menu li a {
+    transition: none !important;
+  }
+  .nav-menu li a:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ヘッダーの青い発光を除去 */
+.header .hamburger span {
+  background: #e0e6ed !important; /* 単色に */
+  box-shadow: none !important; /* 発光除去 */
+}
+
+/* ナビリンクの発光も明示的に無効化（色変化のみ許可） */
+.header .nav-menu li a {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.header .nav-menu li a:hover {
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
