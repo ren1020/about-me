@@ -61,7 +61,7 @@ main {
   position: relative;
   z-index: 1;
   padding-top: 2rem;
-  min-height: calc(100vh - 100px); /* フッターの高さ分を差し引く */
+  min-height: calc(100vh - 100px);
 }
 
 /* TOPページ専用のmainスタイル */
@@ -988,11 +988,11 @@ body.hobby-page .hobby-card {
 
 .modal.inline-mode .modal-content {
   position: fixed;
-  margin: 0; /* 既定の中央寄せを無効化 */
+  margin: 0;
   max-width: none;
   max-height: none;
   object-fit: contain;
-  animation: none; /* 既存のzoomアニメを無効化（JS側で制御） */
+  animation: none;
 }
 
 /* キャプションは画像の直下に追従させるため中央配置幅を解除 */
@@ -1628,7 +1628,8 @@ body.hobby-page .hobby-card {
 }
 
 /* ===========================================
-   CONTACTページの専用スタイル - back8.jpegの背景に映えるように */
+   CONTACTページの専用スタイル - back8.jpegの背景に映えるように
+   =========================================== */
 body.contact-page #contact {
   background: linear-gradient(
     135deg,
@@ -2065,7 +2066,7 @@ body.myprofile-page #profile::before {
 }
 
 /* ===========================================
-   � PAW CURSOR SYSTEM (肉球カーソルシステム)
+   PAW CURSOR SYSTEM（肉球カーソルシステム）
    =========================================== */
 
 /* カスタム肉球カーソル */
@@ -2147,7 +2148,7 @@ body.myprofile-page #profile::before {
   transition: none !important;
 }
 .nav-menu li a::before {
-  display: none !important; /* スキャン光を非表示 */
+  display: none !important;
 }
 
 /* ホバー時の移動/発光を停止（色変化は残す場合は背景のみ） */
@@ -2165,7 +2166,7 @@ body.myprofile-page #profile::before {
 /* モバイルメニューのスライドアニメーションを停止 */
 @media (max-width: 600px) {
   .nav-menu {
-    transition: none !important; /* right のアニメーションを無効化 */
+    transition: none !important;
   }
   .nav-menu li a {
     transition: none !important;
@@ -2178,8 +2179,8 @@ body.myprofile-page #profile::before {
 
 /* ヘッダーの青い発光を除去 */
 .header .hamburger span {
-  background: #e0e6ed !important; /* 単色に */
-  box-shadow: none !important; /* 発光除去 */
+  background: #e0e6ed !important;
+  box-shadow: none !important;
 }
 
 /* ナビリンクの発光も明示的に無効化（色変化のみ許可） */
