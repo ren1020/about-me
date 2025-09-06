@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TOP</title>
-    <!-- reset.css ress -->
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <!-- インラインだった Blue Enhancement CSS は styles.css へ移動 -->
   </head>
   <body class="top-page">
     <header class="header">
@@ -26,8 +26,11 @@
       </nav>
     </header>
     <main>
-      <div class="hero-section">
-        <div class="hero-content">
+      <div class="hero-section blue-enhanced">
+        <div class="bg-bubbles" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="hero-content enh-box">
           <h1>Welcome!</h1>
           <nav class="hero-nav">
             <ul>
@@ -38,7 +41,6 @@
               <li><a href="contact.html">CONTACT</a></li>
             </ul>
           </nav>
-
           <div class="social-links">
             <h3>Follow me</h3>
             <a
@@ -46,11 +48,11 @@
               target="_blank"
               rel="noopener noreferrer"
               class="instagram-link"
+              >📷 Instagram</a
             >
-              📷 Instagram
-            </a>
           </div>
         </div>
+        <div class="scroll-indicator" aria-hidden="true">SCROLL</div>
       </div>
     </main>
     <footer class="footer">
